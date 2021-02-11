@@ -49,6 +49,7 @@ test<- grass[-inTrain,] # 1404 obs
 # random forest with 500 trees, try 8 variables at each node
 rf_500 <- randomForest(yield ~., data = train, ntree = 500, importance = TRUE, do.trace = TRUE)
 rf_500 # 97.2 var explained
+plot(rf_500)
 pred_500 <- predict(rf_500, test)
 RMSE.500 <- sqrt(mean((pred_500 - test$yield)^2)) #0.17
 
@@ -68,6 +69,7 @@ rf_150
 pred_150<- predict(rf_150, test)
 #pred_150<- predict(rf_150, test, predict.all = TRUE) this creates a prediction df for calculating CI
 RMSE.150 <- sqrt(mean((pred_150 - test$yield)^2)) #0.17
+plot(rf_150)
 plot(pred_150~test$yield)
 saveRDS(rf_150, "RF150.rds")
 rf150 <- pmml(rf_150)
@@ -78,6 +80,7 @@ rf_75
 pred_75<- predict(rf_75, test)
 #pred_75 <- predict(rf_75, test, predict.all = TRUE) this creates a prediction df for calculating CI
 RMSE.75 <- sqrt(mean((pred_75 - test$yield)^2)) #0.18
+plot(rf_75)
 plot(pred_75~test$yield)
 saveRDS(rf_75, "RF75.rds")
 rf75<- pmml(rf_75)
