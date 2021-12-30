@@ -1,10 +1,12 @@
+# this script attempts to relate yields between species to create individual species models
+
 library(tidyverse)
 
 
 # upload data -------------------------------------------------------------
 
-var <- read_csv("CombVarietyTrial.csv")
-ssurgo <- read_csv("../surgoGrassStats.csv")
+var <- read_csv("data/CombVarietyTrial.csv")
+ssurgo <- read_csv("data/surgoGrassStats.csv")
 
 
 # relate ssurgo yields to each other using kentucky bluegrass as base ---------------------------

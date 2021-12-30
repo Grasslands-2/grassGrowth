@@ -1,3 +1,5 @@
+# this script creates figures for the manuscript
+
 library(usmap)
 library(tidyverse)
 

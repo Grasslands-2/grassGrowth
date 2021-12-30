@@ -1,6 +1,10 @@
+# this script uses pastures for profit seasonal growth data to model grass growth across the season depending on conditions
+
+library(tidyverse)
+
 # load data
-grass <- read_csv("grassData_simple.csv")
-growth <- readxl::read_excel("seasonalGrowth.xlsx")
+grass <- read_csv("data/grassData_simple.csv")
+growth <- readxl::read_excel("data/seasonalGrowth.xlsx")
 
 # example grass yield data for 3 species from predictions
 ktbg <- as.integer(grass[1,2])
@@ -23,13 +27,11 @@ season_growth <- growth %>%
 
 season_growth$monthF <- factor(season_growth$month, 
                                 labels=c("May", "June", "July", "Aug", "Sept", "Oct"))
+
 ggplot(season_growth, aes(x = month, y = yield, color = quality)) +
   geom_point() +
   geom_smooth(method = "loess") +
   facet_wrap(~species)
 
-ggplot(season_growth, aes(x = monthF, y = yield, color = quality, group = 1)) +
-  geom_point() +
-  geom_line() +
-  facet_wrap(~species)
+
          
