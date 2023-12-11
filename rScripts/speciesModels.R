@@ -151,7 +151,7 @@ ggplot(joined, aes(x = reorder(species, rel.meanYld), y = rel.meanYld, color = d
 
 # pastures for profit species ---------------------------------------------
 
-pp <- read_csv("../pasturesForProfit.csv")
+pp <- read_csv("data/pasturesForProfit.csv")
 
 good <- pp %>%
   filter(quality == "good")
